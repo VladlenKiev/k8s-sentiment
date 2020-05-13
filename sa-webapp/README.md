@@ -7,6 +7,14 @@
 ## Building the container
 ` $ docker build -f Dockerfile -t $DOCKER_USER_ID/sentiment-analysis-web-app . `
 
+## Get to know IP your Docker station
+Example, for my station. It has 192.168.99.100 and I should set this IP on all apps.
+``` 
+$ docker machine ip
+```
+  
+
+
 ## Running the container
 ``` 
 $ docker run -d -p 8080:8080 -e SA_LOGIC_API_URL='http://<container_ip or docker machine ip>:5000' $DOCKER_USER_ID/sentiment-analysis-web-app  
