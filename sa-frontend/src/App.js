@@ -8,6 +8,19 @@ import Polarity from "./components/Polarity";
 
 const style = {
     marginLeft: 12,
+    backgroundColor: 'green',
+    button: {
+        color: 'red',
+        padding: '10px',
+        '&:hover': {
+            background: 'yellow'
+        }
+    },
+    '@media (min-width: 1024px)': {
+        button: {
+            padding: '20px'
+        }
+    }
 };
 
 class App extends Component {
@@ -49,7 +62,7 @@ class App extends Component {
                         <h2>Sentiment Analyser</h2>
                         <TextField ref={ref => this.textField = ref} onKeyUp={this.onEnterPress.bind(this)}
                                    hintText="Type your sentence."/>
-                        <RaisedButton  label="Send" style={style} onClick={this.analyzeSentence.bind(this)}/>
+                            <RaisedButton backgroundColor={style.backgroundColor} label="Send" style={style} onClick={this.analyzeSentence.bind(this)}/>
                         {polarityComponent}
                     </Paper>
                 </div>
