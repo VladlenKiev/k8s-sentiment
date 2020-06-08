@@ -22,7 +22,7 @@ spec:
         app: sa-frontend
     spec:
       containers:
-        - image: rinormaloku/sentiment-analysis-frontend:green
+        - image: vladlenkiev/sentiment-analysis-frontend:green-0.2.2
           imagePullPolicy: Always
           name: sa-frontend
           ports:

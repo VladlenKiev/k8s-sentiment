@@ -9,4 +9,4 @@ spec:
     protocol: TCP          # 4
     targetPort: 80         # 5
   selector:                # 6
-    app: sa-frontend       # 7
+    app: sa-frontend       # 7 это метка на те pod-ы
