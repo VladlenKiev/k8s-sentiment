@@ -4,7 +4,7 @@
 ## Building the application
 ` $ yarn build `
 
-## Building the container
+## Building the image
 ` $ docker build -f Dockerfile -t $DOCKER_USER_ID/sentiment-analysis-frontend . `
 
 ## Running the container

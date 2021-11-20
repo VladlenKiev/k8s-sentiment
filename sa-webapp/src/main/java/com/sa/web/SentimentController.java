@@ -16,14 +16,20 @@ public class SentimentController {
     @PostMapping("/sentiment")
     public SentimentDto sentimentAnalysis(@RequestBody SentenceDto sentenceDto) {
         RestTemplate restTemplate = new RestTemplate();
-
+//        SentimentDto sentimentDto = new SentimentDto();
+//        sentimentDto.setSentence(sentenceDto.getSentence());
+//        sentimentDto.setPolarity(125f);
+//        System.out.println("sentimentDto = " + sentimentDto);
+//        return sentimentDto;
+        System.out.println("Incoming message = " + sentenceDto);
         return restTemplate.postForEntity(saLogicApiUrl + "/analyse/sentiment",
                 sentenceDto, SentimentDto.class)
                 .getBody();
     }
 
     @GetMapping("/testHealth")
-    public void testHealth() {
+    public String testHealth() {
+        return "all ok";
     }
 }
 

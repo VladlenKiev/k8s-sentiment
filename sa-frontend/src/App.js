@@ -17,7 +17,7 @@ class App extends Component {
             sentence: '',
             polarity: undefined
         };
-    };
+    }
 
     analyzeSentence() {
         fetch('http://192.168.99.100:8080/sentiment', {
@@ -46,9 +46,9 @@ class App extends Component {
             <MuiThemeProvider>
                 <div className="centerize">
                     <Paper zDepth={1} className="content">
-                        <h2>Sentiment Analyser</h2>
+                        <h2>Sentiment Analyser (Mankivskyi TZ-88)</h2>
                         <TextField ref={ref => this.textField = ref} onKeyUp={this.onEnterPress.bind(this)}
-                                   hintText="Type your sentence."/>
+                                   hintText="PLS, Type your sentence."/>
                         <RaisedButton  label="Send" style={style} onClick={this.analyzeSentence.bind(this)}/>
                         {polarityComponent}
                     </Paper>
