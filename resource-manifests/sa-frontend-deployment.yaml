@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment                                          # 1
 metadata:
-  name: sa-frontend
+  name: sa-frontend-2
   labels:
-    app: sa-frontend
+    app: sa-frontend-2
 spec:
   selector:
     matchLabels:
-      app: sa-frontend
+      app: sa-frontend-2
   replicas: 2                                             # 2
   minReadySeconds: 15
   strategy:
@@ -18,10 +18,10 @@ spec:
   template:
     metadata:
       labels:
-        app: sa-frontend                                  # 6
+        app: sa-frontend-2                                  # 6
     spec:
       containers:
-        - image: vladlenkiev/sentiment-analysis-frontend:minikube-0.2.2
+        - image: /vladlenkiev/sentiment-analysis-frontend-minikube
           imagePullPolicy: Always                         # 7
           name: sa-frontend
           ports:

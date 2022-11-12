@@ -20,7 +20,7 @@ class App extends Component {
     }
 
     analyzeSentence() {
-        fetch('http://192.168.99.100:8080/sentiment', {
+        fetch('http://localhost:8080/sentiment', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -28,7 +28,11 @@ class App extends Component {
             body: JSON.stringify({sentence: this.textField.getValue()})
         })
             .then(response => response.json())
-            .then(data => this.setState(data));
+            .then(data => this.setState(data))
+            .catch(err => {
+                console.log('Check your connection to sa-webapp', err)
+                this.setState({"sentence":"Check your connection to sa-webapp","polarity":"0"})
+            });
     }
 
     onEnterPress = e => {
@@ -46,7 +50,7 @@ class App extends Component {
             <MuiThemeProvider>
                 <div className="centerize">
                     <Paper zDepth={1} className="content">
-                        <h2>Sentiment Analyser (Mankivskyi TZ-88)</h2>
+                        <h2>TEST Sentiment Analyser (Mankivskyi TZ-88)</h2>
                         <TextField ref={ref => this.textField = ref} onKeyUp={this.onEnterPress.bind(this)}
                                    hintText="PLS, Type your sentence."/>
                         <RaisedButton  label="Send" style={style} onClick={this.analyzeSentence.bind(this)}/>
