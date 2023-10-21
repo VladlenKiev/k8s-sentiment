@@ -1,3 +1,9 @@
+## Building on the Local Host
+````
+python -m pip install -r requirements.txt --trusted-host pypi.org numpy
+
+python sentiment_analysis.py    
+````
 ## Building the Docker Container
 
 ```
