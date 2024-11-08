@@ -1,0 +1,34 @@
+version: '3.3'
+
+services:
+  sa-front:
+    build: '../sa-frontend'
+    ports:
+      - 80:80
+    networks:
+      front-network:
+        aliases:
+          - sa-front
+  sa-web:
+    build: '../sa-webapp'
+    ports:
+      - 8080:8080
+    environment:
+      - SA_LOGIC_API_URL=http://sa-logic:5000
+    networks:
+      front-network:
+      back-network:
+        aliases:
+          - sa-web
+  sa-logic:
+    build: '../sa-logic'
+    #    image: prom/prometheus
+    ports:
+      - 5000:5000
+    networks:
+      back-network:
+        aliases:
+          - sa-logic
+networks:
+  front-network:
+  back-network:

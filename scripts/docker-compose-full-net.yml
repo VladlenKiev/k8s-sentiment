@@ -1,12 +1,11 @@
 version: '3.3'
-
 services:
   sa-front:
     build: '../sa-frontend'
     ports:
       - 80:80
     networks:
-      monitoring:
+      my-network:
         aliases:
           - sa-front
   sa-web:
@@ -14,9 +13,9 @@ services:
     ports:
       - 8080:8080
     environment:
-      - SA_LOGIC_API_URL=http://192.168.99.100:5000
+      - SA_LOGIC_API_URL=http://sa-logic:5000
     networks:
-      monitoring:
+      my-network:
         aliases:
           - sa-web
   sa-logic:
@@ -24,12 +23,11 @@ services:
     #    image: prom/prometheus
     ports:
       - 5000:5000
-#    volumes:
-#      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
-#      - ./prometheus:/prometheus
     networks:
-      monitoring:
+      my-network:
         aliases:
           - sa-logic
 networks:
-  monitoring:
+  my-network:
+    driver: bridge
+    name: full-network
