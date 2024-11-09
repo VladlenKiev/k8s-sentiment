@@ -1,0 +1,35 @@
+version: '3.3'
+services:
+  sa-front:
+    image: vladlenkiev/sentiment-analysis-frontend:0.3.24
+#    build: '../sa-frontend'
+    ports:
+      - 80:80
+    networks:
+      my-network:
+        aliases:
+          - sa-front
+  sa-web:
+    image: vladlenkiev/sentiment-analysis-web-app:0.1.24
+#    build: '../sa-webapp'
+    ports:
+      - 8080:8080
+    environment:
+      - SA_LOGIC_API_URL=http://sa-logic:5000
+    networks:
+      my-network:
+        aliases:
+          - sa-web
+  sa-logic:
+    image: vladlenkiev/sentiment-analysis-logic:0.2.24
+#    build: '../sa-logic'
+    ports:
+      - 5000:5000
+    networks:
+      my-network:
+        aliases:
+          - sa-logic
+networks:
+  my-network:
+    driver: bridge
+    name: full-network
