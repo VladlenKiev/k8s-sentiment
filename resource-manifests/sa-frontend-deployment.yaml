@@ -21,7 +21,7 @@ spec:
         app: sa-frontend-2                                  # 6
     spec:
       containers:
-        - image: /vladlenkiev/sentiment-analysis-frontend-minikube
+        - image: vladlenkiev/sentiment-analysis-frontend:0.3.24
           imagePullPolicy: Always                         # 7
           name: sa-frontend
           ports:
